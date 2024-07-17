@@ -19,6 +19,11 @@ if [ $? -eq 0 ]; then
     fi
 echo "remove default html files under usr/share/nginx/html"
 rm -rf /usr/share/nginx/html/* >>$log_file
+if [ $? -eq 0 ]; then
+  echo Successfully removed existing html content
+  else
+    echo Failed to emoved existing html content
+    fi
 
 cd /usr/share/nginx/html/
 download_warfiles
