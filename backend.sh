@@ -8,10 +8,10 @@ echo "install nodejs 18"
 dnf install nodejs -y >>log_file
 useradd expense >>log_file
 cp backend.service /etc/systemd/system/backend.service >>log_file
-download_warfiles
+rm -rf /app
 mkdir /app
 cd /app
-
+download_warfiles
 echo "install all dependence"
 npm install >>log_file
 echo "load daemon"
