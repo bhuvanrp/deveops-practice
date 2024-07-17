@@ -16,7 +16,13 @@ if [ $? -eq 0 ]; then
   else
     echo Failed to instal nodejs
     fi
+echo add expense user
 useradd expense >>log_file
+if [ $? -eq 0 ]; then
+  echo Successfully added the expense user
+  else
+    echo Failed to add the expense user
+    fi
 cp backend.service /etc/systemd/system/backend.service >>log_file
 rm -rf /app
 mkdir /app
