@@ -3,6 +3,13 @@ source common.sh
 component=frontend
 echo "installing nginx ...."
 dnf install nginx -y >>$log_file
+if [$? -eq 0]; then
+  echo Successfylly installed
+  else
+    echo Installation is failed
+    fi
+
+
 echo "nginx installation is completed"
 cp expense.conf /etc/nginx/default.d/expense.conf >>$log_file
 echo "remove default html files under usr/share/nginx/html"
