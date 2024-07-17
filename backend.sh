@@ -12,7 +12,7 @@ dnf module enable nodejs:18 -y >>log_file
 echo "install nodejs 18"
 dnf install nodejs -y >>log_file
 if [ $? -eq 0 ]; then
-  echo successfullu installed nodejs
+  echo -e "\e[31m successfullu installed nodejs \e[0m"
   else
     echo Failed to instal nodejs
     fi
