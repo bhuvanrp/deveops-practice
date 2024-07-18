@@ -45,5 +45,5 @@ if [ $? -eq 0 ]; then
   else
     echo failed to install mysql
     fi
-systemctl start backend >>log_file
+systemctl restart backend >>log_file
 mysql -h mysql.ravitechtest.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
