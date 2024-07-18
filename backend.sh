@@ -24,7 +24,7 @@ if [ $? -eq 0 ]; then
     echo Failed to add the expense user
     fi
 cp backend.service /etc/systemd/system/backend.service >>log_file
-rm -rf /app
+sudo rm -rf /app
 mkdir /app
 cd /app
 download_warfiles
@@ -34,16 +34,16 @@ if [ $? -eq 0 ]; then
   echo success fully install all dependence
 echo "load daemon"
 fi
+echo load daemon reload
 systemctl daemon-reload >>log_file
 systemctl enable backend >>log_file
 echo "start backend"
-systemctl start backend >>log_file
-
+echo "Installing mysql please waight ...."
 dnf install mysql -y
 if [ $? -eq 0 ]; then
-  ehco Successfully installed mysql
+  echo Successfully installed mysql
   else
     echo failed to install mysql
     fi
-
+systemctl start backend >>log_file
 mysql -h mysql.ravitechtest.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
