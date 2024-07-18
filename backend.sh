@@ -4,26 +4,32 @@ component=backend
 echo "disable default nodejs"
 dnf module disable nodejs -y >>log_file
 if [ $? -eq 0 ]; then
-  echo success fully disabled
+  echo "\e[32msuccessfully disabled \e[0m"
   else
-    echo Failed to disable
+    echo "\e[31mFailed to disable\e[0m"
     fi
 dnf module enable nodejs:18 -y >>log_file
 echo "install nodejs 18"
 dnf install nodejs -y >>log_file
 if [ $? -eq 0 ]; then
-  echo -e "\e[31m successfullu installed nodejs \e[0m"
+  echo -e "\e[32m successfullu installed nodejs \e[0m"
   else
-    echo Failed to instal nodejs
+    echo "\e[31mFailed to instal nodejs\e[0m"
     fi
-echo add expense user
+echo addng user as expense
 useradd expense >>log_file
 if [ $? -eq 0 ]; then
-  echo Successfully added the expense user
+  echo "\e[32mSuccessfully added the expense user\e[0m"
   else
-    echo Failed to add the expense user
+    echo "\e[31mFailed to add the expense user\e[0m"
     fi
+    echo copieng backend.service file to /etc/systemd/system/backend.service path
 cp backend.service /etc/systemd/system/backend.service >>log_file
+if [ $? -eq 0 ]; then
+  echo "\e[32mSuccessfully copied backend service file\e[0m"
+  else
+    echo "\e[31mFailed to copied\e[0m"
+    fi
 sudo rm -rf /app
 mkdir /app
 cd /app
